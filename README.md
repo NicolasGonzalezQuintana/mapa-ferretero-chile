@@ -13,23 +13,94 @@ La versión publicada contiene 410 puntos georreferenciados:
 
 Los datos consolidados están en `public/stores.json`, por lo que no se necesita ninguna clave para ejecutar el dashboard.
 
-## Ejecutar localmente
+## Paso a paso para ejecutar el dashboard
 
-Requisito: Node.js 22.13 o superior.
+### 1. Instalar los requisitos
+
+Necesitas:
+
+- [Git](https://git-scm.com/downloads).
+- [Node.js](https://nodejs.org/) versión 22.13 o superior. Se recomienda instalar la versión LTS.
+
+Comprueba las versiones desde PowerShell, Terminal o una consola:
+
+```bash
+git --version
+node --version
+npm --version
+```
+
+Si `node --version` muestra una versión inferior a 22.13, actualiza Node.js antes de continuar.
+
+### 2. Descargar el proyecto
+
+Opción recomendada, usando Git:
+
+```bash
+git clone https://github.com/NicolasGonzalezQuintana/mapa-ferretero-chile.git
+cd mapa-ferretero-chile
+```
+
+También puedes descargarlo desde GitHub con **Code → Download ZIP**. En ese caso, descomprime el archivo y abre una terminal dentro de la carpeta `mapa-ferretero-chile`.
+
+### 3. Descargar e instalar las dependencias
+
+Ejecuta este comando dentro de la carpeta del proyecto:
 
 ```bash
 npm install
+```
+
+El comando lee `package.json` y descarga automáticamente React, Leaflet, vinext y las demás dependencias necesarias. La carpeta generada `node_modules` no se sube a GitHub.
+
+### 4. Iniciar el dashboard
+
+```bash
 npm run dev
 ```
 
-Abre la dirección local que aparece en la terminal, normalmente `http://localhost:3000`.
+Cuando la terminal indique que el servidor está listo, abre la dirección que muestra en pantalla, normalmente:
 
-Para validar una compilación de producción:
+```text
+http://localhost:3000
+```
+
+Mantén la terminal abierta mientras uses el dashboard. Para detenerlo, vuelve a la terminal y presiona `Ctrl + C`.
+
+Los 410 locales ya están incluidos en `public/stores.json`; no necesitas claves API ni una cuenta de ChatGPT para ejecutar el mapa.
+
+### 5. Compilar y validar la versión de producción
 
 ```bash
 npm run build
 npm test
 ```
+
+Si ambos comandos finalizan sin errores, el proyecto está listo para desplegarse.
+
+### 6. Volver a ejecutarlo otro día
+
+No necesitas repetir `npm install` cada vez. Abre una terminal en la carpeta del proyecto y ejecuta:
+
+```bash
+npm run dev
+```
+
+Después de descargar cambios nuevos desde GitHub, usa:
+
+```bash
+git pull
+npm install
+npm run dev
+```
+
+### Problemas frecuentes
+
+- **`node` o `npm` no se reconoce como comando:** instala Node.js y vuelve a abrir la terminal.
+- **La versión de Node es inferior a 22.13:** actualiza Node.js a la versión LTS actual.
+- **El puerto ya está ocupado:** detén el otro servidor con `Ctrl + C` o utiliza el puerto alternativo que indique la terminal.
+- **Las dependencias están dañadas o incompletas:** elimina `node_modules`, ejecuta nuevamente `npm install` y después `npm run dev`.
+- **El mapa base no aparece:** comprueba la conexión a Internet, porque las calles se cargan desde OpenStreetMap. Los datos de los locales permanecen en el proyecto.
 
 ## Actualizar los puntos de venta
 

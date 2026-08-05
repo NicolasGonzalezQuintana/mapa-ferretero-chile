@@ -32,6 +32,79 @@ npm --version
 
 Si `node --version` muestra una versión inferior a 22.13, actualiza Node.js antes de continuar.
 
+#### Windows: instalación con PowerShell
+
+Instala Git:
+
+```powershell
+winget install --id Git.Git -e
+```
+
+Instala NVM para Windows, que permite seleccionar una versión específica de Node.js:
+
+```powershell
+winget install --id CoreyButler.NVMforWindows -e
+```
+
+Cierra y vuelve a abrir PowerShell. Después instala y activa Node.js 22.13.0:
+
+```powershell
+nvm install 22.13.0
+nvm use 22.13.0
+```
+
+Comprueba la instalación:
+
+```powershell
+git --version
+node --version
+npm --version
+```
+
+El resultado de `node --version` debe ser `v22.13.0`. Si `winget` no está disponible, instala Git desde [git-scm.com](https://git-scm.com/downloads) y NVM para Windows desde [nvm-windows](https://github.com/coreybutler/nvm-windows/releases).
+
+#### macOS: instalación con Homebrew y NVM
+
+Instala Git y NVM:
+
+```bash
+brew install git nvm
+mkdir -p ~/.nvm
+```
+
+Sigue las instrucciones que muestra Homebrew para cargar NVM en tu shell. Luego ejecuta:
+
+```bash
+nvm install 22.13.0
+nvm use 22.13.0
+nvm alias default 22.13.0
+```
+
+#### Linux: instalación con NVM
+
+Instala Git con el gestor de paquetes de tu distribución. En Ubuntu o Debian:
+
+```bash
+sudo apt update
+sudo apt install -y git curl
+```
+
+Instala NVM usando las instrucciones oficiales de [nvm-sh/nvm](https://github.com/nvm-sh/nvm), vuelve a abrir la terminal y ejecuta:
+
+```bash
+nvm install 22.13.0
+nvm use 22.13.0
+nvm alias default 22.13.0
+```
+
+Finalmente, en macOS o Linux comprueba las versiones:
+
+```bash
+git --version
+node --version
+npm --version
+```
+
 ### 2. Descargar el proyecto
 
 Opción recomendada, usando Git:
